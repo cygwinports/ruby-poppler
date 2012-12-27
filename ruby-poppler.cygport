@@ -1,0 +1,7 @@
+NAME="ruby-poppler"
+VERSION=1.1.8
+RELEASE=1
+inherit rubygem
+
+
+DEPS_PATH="/usr/lib/ruby/gems/${RUBY_VERSION}/gems/cairo-*/lib:/usr/lib/ruby/gems/${RUBY_VERSION}/gems/glib2-*/lib"
