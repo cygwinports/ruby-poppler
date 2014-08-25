@@ -1,11 +1,17 @@
 inherit rubygem
 
 NAME="ruby-poppler"
-VERSION=2.0.2
+VERSION=2.2.0
 RELEASE=1
 CATEGORY="Ruby"
 SUMMARY="Ruby Poppler-GLib bindings"
 DESCRIPTION="Ruby/Poppler is a Ruby binding of poppler-glib."
 HOMEPAGE="http://ruby-gnome2.sourceforge.jp/"
 
-DEPS_PATH="/usr/lib/ruby/gems/${RUBY_VERSION}/gems/cairo-*/lib:/usr/lib/ruby/gems/${RUBY_VERSION}/gems/glib2-*/lib"
+PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc"
+ruby_poppler_CONTENTS="--exclude=sample ${RUBYGEM_EXTDIR#/} ${RUBYGEM_INSTDIR#/} ${RUBYGEM_SPEC#/}"
+ruby_poppler_devel_REQUIRES="${NAME} ruby-glib2-devel libpoppler-glib-devel"
+ruby_poppler_devel_CONTENTS="usr/lib/lib*.a usr/lib/pkgconfig/"
+ruby_poppler_doc_CONTENTS="${RUBYGEM_DOCDIR#/} ${RUBYGEM_INSTDIR#/}/sample/"
+
+DEPS_PATH="${RUBYGEM_EXTDIR%/*}/glib2-${VERSION}:${RUBYGEM_EXTDIR%/*}/cairo-1*"
