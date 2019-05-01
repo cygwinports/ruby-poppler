@@ -1,19 +1,19 @@
 inherit rubygem
 
 NAME="ruby-poppler"
-VERSION=3.1.8
+VERSION=3.2.9
 RELEASE=1
 CATEGORY="Ruby"
 SUMMARY="Ruby Poppler-GLib bindings"
 DESCRIPTION="Ruby/Poppler is a Ruby binding of poppler-glib."
 HOMEPAGE="http://ruby-gnome2.sourceforge.jp/"
 
-PATCH_URI="3.1.1-link-deps.patch"
-
-PKG_NAMES="${NAME} ${NAME}-devel ${NAME}-doc"
+PKG_NAMES="${NAME} ${NAME}-doc"
+ruby_poppler_OBSOLETES="${NAME}-devel"
+ruby_poppler_REQUIRES="girepository-Poppler0.18"
 ruby_poppler_CONTENTS="--exclude=sample ${RUBYGEM_EXTDIR#/} ${RUBYGEM_INSTDIR#/} ${RUBYGEM_SPEC#/}"
-ruby_poppler_devel_REQUIRES="${NAME} ruby-glib2-devel libpoppler-glib-devel"
-ruby_poppler_devel_CONTENTS="usr/lib/lib*.a usr/lib/pkgconfig/"
 ruby_poppler_doc_CONTENTS="${RUBYGEM_DOCDIR#/} ${RUBYGEM_INSTDIR#/}/sample/"
 
-DEPS_PATH="${RUBYGEM_EXTDIR%/*}/glib2-${VERSION}:${RUBYGEM_EXTDIR%/*}/cairo-1*"
+# we have to wait until the old archful ones are archived
+#ARCH=noarch
+
